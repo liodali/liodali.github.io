@@ -258,7 +258,7 @@ function addTexture(x,image){
 							var texture= new THREE.TextureLoader().load( image );
 							texture.wrapS = THREE.RepeatWrapping;
 							texture.wrapT = THREE.RepeatWrapping;
-							texture.repeat.set( 128, 128 );
+							texture.repeat.set( 64, 64 );
 							object.material.map=texture;
 							object.material.needsUpdate = true;
 							choixTexture(x,object);
@@ -272,7 +272,7 @@ function addTexture(x,image){
 							
 							loader.wrapS = THREE.RepeatWrapping;
 							loader.wrapT = THREE.RepeatWrapping;
-							loader.repeat.set( 128, 128 );	
+							loader.repeat.set( 64, 64 );	
 							obj.material.map=loader;
 							
 							obj.material.map.needsUpdate = true;
