@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first three.js app</title>
+		
+<!--Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/bootstrap.colorpickersliders.css">
+<link rel="stylesheet" href="css/bootstrap_material_design.css" >
+<link rel="stylesheet" href="css/ripples.css" >
+<link rel="stylesheet" href="noUiSlider.9.2.0/noUiSlider.css" >
+<!-- Optional theme 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+
+		<style>
+			body { margin: 0;
+			background-color: #ececec; }
+			.Menu{
+				position: fixed;
+				width: 23%;
+				left: 77%;
+				height: 100%;
+				top:2px;
+				overflow: auto;
+			}
+			#MatCanvas {     
+				
+    			width: 230px; height: 200px ;
+    			display: block;
+			    margin-left: auto;
+			    margin-right: auto;
+			    }
+			#mycanvas{     
+				top: 0px;
+    			position: fixed;
+    			width: 980px; height: 100% ;
+			    }
+			#Models {     
+				top: 0px;
+				left: 0px;
+    			position: fixed;
+    			width: 980px; height: 100% ;
+			    }
+			#ContentModels{
+				top: 0px;
+    			position: absolute;
+    			width: 980px; height: 100% ;
+    			
+				padding: 3em 0 0 0;
+			}
+			.panel-primary>.Stylepanelhead{
+				background-image: -webkit-linear-gradient(top,#868686 0,#adadad 100%);
+			}
+			.panel-primary>.panel-heading+.panel-collapse>.Stylepanelbody{
+				border-top-color: #d0d0d0;
+			}
+			.StylePanel{
+					border-color:#fff;
+
+
+			}
+			.StyleModels{
+				padding-right: 0;
+			    padding-left: 0;
+			    padding-bottom: 0;
+			}
+			.StyleBt{
+				    margin-bottom: 5px;
+			}
+			.StyleTab{
+				  
+				    text-decoration: none;
+				    
+			}
+			.StyleTab:hover,.StyleTab:active{
+				    color: #fff;
+				    margin: 0px 0px;
+				    background-color: #000;
+				    padding: 10px;
+				    text-decoration: none;
+				    
+			}
+			.rotate{
+				-webkit-transform: rotate(90deg);
+			    -moz-transform: rotate(90deg);
+			    -o-transform: rotate(90deg);
+			    -ms-transform: rotate(90deg);
+			    transform: rotate(90deg);
+			}
+			a, a:hover, a:focus {
+
+				color: #000000;
+				text-decoration: none;
+			}
+			.customFormGroup{
+				margin: 0px 0 0 0;
+			}
+			
+			.list-item {
+				display: inline-block;
+				margin: 1em;
+				padding: 1em;
+				box-shadow: 1px 2px 4px 0px rgba(0,0,0,0.25);
+			}
+			.list-item .scene {
+				width: 200px;
+				height: 200px;
+			}
+			.list-item .description {
+				color: #888;
+				font-family: sans-serif;
+				font-size: large;
+				width: 200px;
+				margin-top: 0.5em;
+			}
+			.navB{
+				position: absolute;
+				top: -34px; width: 100%;
+				z-index: 1;
+				padding: 3em 0 0 0;
+			}
+		</style>
+	</head>
+	<body>
+	
+<div class="navB hide" id="back">
+	<ol class="breadcrumb" style="width: 77%;">
+ 	 <li><a onclick="backhome()">Home</a></li>
+	  <li><a href="#" id="backAdd">add</a></li>
+	  
+</ol>
+
+</div>
+	
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="position: fixed;width: 23%;left: 77%;height: 100%;top:2px;overflow: auto;">
+
+			<div class="panel panel-default StylePanel"  >	
+				<div class="panel-heading Stylepanelhead" > 
+					<h4 class="panel-title">
+						<a   data-toggle="collapse" data-parent="#accordion" href="#collapseInfo" 
+						aria-expanded="true" aria-controls="collapseInfo" >
+							Info 
+						 </a>
+		  		    </h4>
+		  		</div> 
+		  		<div class="panel-collapse collapse" id="collapseInfo" role="tabpanel" >
+				  <div class="panel-body Stylepanelbody" id="panelbody">
+				    <div id="coordonne">
+				    		<ul class="list-group">
+										  <li class="list-group-item">Position</li>
+										  <li class="list-group-item">
+										  	 x :
+									 	 	 y :
+									  		 z :
+									  	  </li>
+									 	 <li class="list-group-item">Rotation</li>
+									  	 <li class="list-group-item">
+									  	 	x :
+									   		y : 
+									   		z : 
+									   	 </li>
+							</ul>
+								
+						</div>
+						<div id="actionbt">
+								<button onclick="removeObject()" class="btn btn-danger btn-lg btn-block btn-raised disabled" id="removeobject"> Remove </button>
+							</div>	
+				  	</div>
+				  </div>
+			</div>
+			<div class="panel panel-default StylePanel"  >	
+				<div class="panel-heading Stylepanelhead"> 
+					<h4 class="panel-title">
+						<a  class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseModels" aria-expanded="false" aria-controls="collapseModels" >
+							Models 
+						 </a>
+		  		    </h4>
+		  		</div> 
+		  		<div class=" panel-collapse collapse in" id="collapseModels">
+				  <div class="panel-body Stylepanelbody" id="panelbodyModels"  >
+				    <div id="Model" class="col-md-12 col-md-6 StyleModels">
+				    		<button type="button" class="btn btn-warning StyleBt" onclick="makeGeometry(1);">Living Room</button>
+				    		<button type="button" class="btn btn-warning StyleBt" onclick="makeGeometry(2);" >Kitchen</button>
+				    		<button type="button" class="btn btn-warning StyleBt" onclick="makeGeometry(3);">table</button>
+				    		<button type="button" class="btn btn-warning StyleBt" onclick="makeGeometry(4);">Extra</button>
+						</div>
+				  	</div>
+				  </div>
+			</div>
+
+			<!-- Texture -->
+			<div class="panel panel-default StylePanel"  >	
+				<div class="panel-heading Stylepanelhead"> 
+					<h4 class="panel-title">
+						<a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseColor" aria-expanded="false" aria-controls="collapseColor" >
+							Texture  
+						 </a>
+		  		    </h4>
+		  		</div> 
+		  		<div class=" panel-collapse collapse in" id="collapseColor">
+				  <div class="panel-body Stylepanelbody" id="panelbodyColor"  >
+				    <div id="TextureObject" class="col-md-12">
+				    		<div class="form-group" >
+									    <label for="s1">Select</label>
+									    <select id="AcTexture" class="form-control">
+									    	<option value="Floor" > Floor</option>
+									      <option value="WallR" > Wall Right</option>
+									      <option value="WallL" selected>  Wall Left</option>
+									      <option value="WallF">  Wall front</option>
+									      
+									    </select>
+								</div>
+				    		<div class="row">
+								  <div class="col-xs-6 col-md-6" >
+								    <button href="#" class="thumbnail"  onclick="addTexture(1,'texture/t1.jpg')" id="t1">
+								      <img src="texture/t1.jpg">
+								    </button>
+								  </div>
+								  <div class="col-xs-6 col-md-6" >
+								    <button  class="thumbnail" id="t2" onclick="addTexture(1,'texture/t2.jpg')">
+								      <img src="texture/t2.jpg" >
+								    </button>
+								  </div>
+								  <div class="col-xs-6 col-md-6">
+								    <button  class="thumbnail" id="t3"  onclick="addTexture(1,'texture/t3.jpg')">
+								      <img src="texture/t3.jpg">
+								    </button>
+								  </div>
+								  <div class="col-xs-6 col-md-6">
+								    <button  class="thumbnail" id="t4" onclick="addTexture(2,'texture/t4.jpg')">
+								      <img src="texture/t4.jpg" >
+								    </button>
+								  </div>
+
+								</div>
+								<button onclick="removeTexture()"  class="btn btn-danger btn-lg btn-block btn-raised">Remove Texture</button>
+						</div>
+				  	</div>
+				  </div>
+			</div>
+			
+			<!-- Advanced-->
+			<div class="panel panel-default StylePanel"  >	
+				<div class="panel-heading Stylepanelhead"> 
+					<h4 class="panel-title">
+					
+					 	<a    data-toggle="collapse" data-parent="#accordion" href="#collapseMaterial" 
+					 	 aria-expanded="false" aria-controls="collapseMaterial" >
+							Advanced :Create Material 
+						 </a>
+						
+						
+		  		    </h4>
+		  		</div> 
+		  		<div class=" panel-collapse collapse in" id="collapseMaterial">
+		  			 <div class="panel-body Stylepanelbody" id="panelbodyMaterial"  >
+						    <div id="MatObject" class="col-md-12">
+						    	<canvas id="MatCanvas">
+			
+								</canvas>	
+								<p class="text-muted"  id="ObjectMat"style="text-align: center;"><label>Object:</label>Clicker un object</p>
+								<button onclick="assignMat()" id="assignMat" class="btn btn-default btn-lg btn-block btn-raised disabled">
+									Assign</button>
+								<div class="form-group" >
+									    <label for="s1">Type Material</label>
+									    <select id="typeMat" class="form-control">
+									      <option value="MeshBasicMaterial" > Basic Material</option>
+									      <option value="MeshLambertMaterial" selected> Lambert Material</option>
+									      <option value="MeshPhongMaterial"> Phong Material</option>
+									      <option value="MeshPhysicalMaterial"> Physical Material</option>
+									      
+									    </select>
+								</div>
+								<div  class="form-group customFormGroup">
+									 <label for="s1">Color Material</label>
+									<input type="text" class="form-control" id="smallhsv" value="#2FB6FF">	
+								</div>		
+								<div class="form-group customFormGroup" id="optionMat">
+									<div class="form-group customFormGroup" id="Opacity">
+										<label for="s1">Opacity</label>
+										<div class="slider shor slider-material-orange" id="opacity"></div>
+									</div>
+									<div class="form-group customFormGroup" id="Roughness">
+										<label for="s1">Roughness</label>
+										<div class="slider shor slider-material-orange" id="roughness"></div>
+									</div>
+									<div class="form-group customFormGroup" id="Emissive">
+										<label for="s1">Emissive</label>
+										<input type="text" class="form-control" id="emissive" value="#000000">	
+									</div>
+									<div class="form-group customFormGroup" id="Specular">
+										<label for="s1">Specular</label>
+										<input type="text" class="form-control" id="specular" value="#000000">	
+									</div>
+									<div class="form-group customFormGroup" id="Shininess">
+										<label for="s1">Shininess</label>
+										<div class="slider shor slider-material-orange" id="shininess"></div>
+									</div>
+								</div>
+								
+					</div>
+				 
+				  </div>
+			</div>
+		
+			
+		</div>	
+
+		
+	</div>
+
+
+		<canvas id="mycanvas">
+			
+		</canvas>
+
+		<canvas id="Models" class="hide"></canvas>
+		<div  id="ContentModels" class="hide"></div >
+
+
+
+		<script id="template" type="notjs">
+			<div class="scene"></div>
+			<div class="caption"><p>Model $</p>
+			</div>
+		</script>
+
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="wait" data-backdrop="static" 
+		data-keyboard="false">
+		  <div class="modal-dialog modal-sm" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		      
+		        <h4 class="modal-title">Chargement Models Wait Please</h4>
+		      </div>
+		      <div class="modal-body">
+		        <div class="progress" >
+					  <div id="prog" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 00%;">
+					    <span class="sr-only"></span>
+					  </div>
+					</div>
+		      </div>
+		     
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="js/jsMaterialDesign/material.js"></script>
+		<script src="js/jsMaterialDesign/ripples.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.js"></script>
+		<script src="js/colorpicker/bootstrap.colorpickersliders.js"></script>
+		<script src="noUiSlider.9.2.0/noUiSlider.js"></script>
+
+
+
+		<script src="js/Three.js"></script>
+
+		<script src="js/Mirror.js"></script>
+		<script type="text/javascript" src="js/loaders/MTLLoader.js" ></script>
+		<script type="text/javascript" src="js/loaders/OBJLoader.js" ></script>
+		<script type="text/javascript" src="js/loaders/ColladaLoader2.js" ></script>
+		<script src="js/controls/DragControls.js"></script>
+		<script src="js/controls/OrbitControls.js"></script>
+		<script src="js/controls/TransformControls.js"></script>
+		<script src="js/libs/stats.min.js"></script>
+		<script src="js/app/init.js"></script>
+		<script src="js/app/animate.js"></script>
+
+		
+		<script type="x-shader/x-vertex" id="vertexShader">
+			varying vec3 vWorldPosition;
+			void main() {
+				vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
+				vWorldPosition = worldPosition.xyz;
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+			}
+		</script>
+
+		<script type="x-shader/x-fragment" id="fragmentShader">
+			uniform vec3 topColor;
+			uniform vec3 bottomColor;
+			uniform float offset;
+			uniform float exponent;
+			varying vec3 vWorldPosition;
+			void main() {
+				float h = normalize( vWorldPosition + offset ).y;
+				gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( max( h , 0.0), exponent ), 0.0 ) ), 1.0 );
+			}
+		</script>-
+		<script src="js/app/mainApp.js"></script>
+		<script src="js/MaterialCanvas/initMat.js"></script>
+		<script src="js/MaterialCanvas/ChoixMat.js"></script>
+		<script src="js/MaterialCanvas/assignMaterial.js"></script>
+		<script src="js/app/GetModels.js"></script>
+		<script src="js/app/loaderModels.js"></script>
+		<script>  
+							$.material.init();
+					/*	$('#MatColor').click(function(){
+						    $("#spanMatColorCollapse").toggleClass('rotate');
+						});
+					*/		
+
+							$("#Roughness").hide();
+					    	//$("#Opacity").hide();
+					    	$("#Emissive").show();
+					    	$("#Shininess").hide();
+					    	$("#Specular").hide();
+							CreateSilder("roughness",0,1,0);
+							CreateSilder("opacity",0,1,1);
+							CreateSilder("shininess",0,100,50);
+							// update Slider Opacity
+							
+						   function CreateSilder(name,min,max,x){
+						   			var slider = document.getElementById(name);
+									noUiSlider.create(slider, {
+										start: min,
+										connect: [true, false],
+										tooltips: [  true ],
+										range: {
+										min:min,
+										max: max,
+
+										}
+
+								});
+								slider.noUiSlider.set(x);
+						 
+						   	
+						   }
+						   changeSlider("opacity",1);
+						   changeSlider("shininess",100);
+						   function changeSlider(name,max){
+						   	document.getElementById(name).noUiSlider.on('update', function( values, handle ) {
+								if(values[handle]<max){
+									
+									if(name=="opacity"){
+										opacityVal=values[handle];
+										transp=true;
+										sphere.material.opacity=opacityVal;
+										sphere.material.transparent=true;
+										
+									} else if(name=="shininess"){
+										shininessVal=values[handle];
+										sphere.material.shininess=shininessVal;
+										
+										sphere.needUpdate = true;
+									}
+									
+									sphere.colorsNeedUpdate = true;	
+								}
+							});
+						   }
+						   
+
+						  /* sliderFormat.noUiSlider.on('update', function( values, handle ) {
+							 rougnhess = values[handle];
+						   });*/
+							$("input#smallhsv").ColorPickerSliders({
+						    size: 'sm',
+						    placement: 'bottom',
+						    swatches: false,
+						    sliders: false,
+						    trigger: 'focus',
+						    hsvpanel: true,
+						    order: {},
+						    onchange: function(container, color) {
+
+						    	if(geometry1!=null){
+						    		var colorTHREE = new THREE.Color( color.tiny.toHexString() );
+						    	    colorMat=colorTHREE;
+								    sphere.material.color=colorTHREE;
+								
+						    		sphere.colorsNeedUpdate = true;
+						    	
+
+						    	}
+
+						    		
+						    	
+						    }
+						  });
+							$("input#emissive").ColorPickerSliders({
+						    size: 'sm',
+						    placement: 'bottom',
+						    swatches: false,
+						    sliders: false,
+						    trigger: 'focus',
+						    hsvpanel: true,
+						    order: {},
+						    onchange: function(container, color) {
+
+						    	if(geometry1!=null){
+						    		var colorTHREE = new THREE.Color( color.tiny.toHexString() );
+						    	    colorMatEmissive=colorTHREE;
+								    sphere.material.emissive=colorTHREE;
+								
+						    		sphere.colorsNeedUpdate = true;
+						    	
+
+						    	}
+
+						    		
+						    	
+						    }
+						  });
+
+						 $("input#swatchesonly").ColorPickerSliders({
+						    placement: 'bottom',
+						    color: 'red',
+						    swatches: ['red', 'green', 'blue'],
+						    customswatches: false,
+						    order: {},
+						    onchange: function(container, color) {
+
+						    	if(objectSelect!=null){
+
+						    		var colorTHREE = new THREE.Color( color.tiny.toHexString() );
+						    	
+								    objectSelect.material.color=colorTHREE;
+								
+						    	objectSelect.colorsNeedUpdate = true;
+						    	}
+						    	
+						    }
+						 });	 
+					     $("input#specular").ColorPickerSliders({
+						    size: 'sm',
+						    placement: 'bottom',
+						    swatches: false,
+						    sliders: false,
+						    trigger: 'focus',
+						    hsvpanel: true,
+						    order: {},
+						    onchange: function(container, color) {
+
+						    	if(geometry1!=null){
+						    		var colorTHREE = new THREE.Color( color.tiny.toHexString() );
+						    	    colorMatSpectacular=colorTHREE;
+								    sphere.material.specular=colorTHREE;
+								
+						    		sphere.colorsNeedUpdate = true;
+						    	
+
+						    	}
+
+						    		
+						    	
+						    }
+						  });
+						</script>
+						
+	</body>
+</html>
