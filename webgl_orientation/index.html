@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Transformation 3D</title>
+		
+		  <!-- Compiled and minified CSS -->
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<style>
+			body { margin: 0;
+			background-color: #ececec; }
+			
+			#mycanvas{     
+				top: 0px;
+    			position: fixed;
+    			width: 100%; height: 100% ;
+			    }
+			   .showbt{
+			   		position: absolute;
+					z-index: 100;
+			   }
+			   .showele{
+			   		position: absolute;
+					z-index: 90;
+			   }
+			.costumbt{
+				
+				top: 20px;
+				right: 10px;
+				float:right;
+			}
+			.costum{
+				top: 40px;
+				right: 20px;
+			}
+			#toast-container{
+				right: 40%;
+				top: 80%;
+			}
+		</style>
+	</head>
+	<body>
+	
+
+		 <a class="btn-floating btn-small waves-effect waves-light white showbt costumbt pulse" id="btmenu" onclick="showMenu()"><i class="material-icons black-text">menu</i></a>
+		 <div class="row showele costum scale-transition scale-out" id="menu">
+		 	<div class="col s12 m3">
+		 	</div>
+		 	<div class="col s12 m3">
+		 	</div>
+	        <div class="col s12 m12">
+	          <div class="card blue-grey lighten-5">
+	            <div class="card-content black-text">
+	              <span class="card-title">Choix </span>
+	               <div class="row">
+					    <form class="col s12">
+					      <div class="row">
+					        <div class="input-field col s6">
+					          <input placeholder="theta" id="theta" type="number" min="0" max="360" class="validate" value="0">
+					          <label for="first_name">theta</label>
+					        </div>
+					        <div class="input-field col s6">
+					          <input placeholder="order" id="ordertheta" type="number" min="1" max="3" class="validate" value="1">
+					          
+					        </div>
+					      </div>
+					      <div class="row">
+					         <div class="input-field col s6">
+					          <input placeholder="Phi" id="phi" type="number" min="0" max="360" class="validate" value="0">
+					          <label for="first_name">phi</label>
+					        </div>
+					        <div class="input-field col s6">
+					          <input placeholder="order" id="orderphi" type="number" min="1" max="3" class="validate" value="2">
+					        
+					        </div>
+					       </div>
+					         <div class="input-field col s6">
+					          <input placeholder="delta" id="delta" type="number" min="0" max="360" class="validate" value="0">
+					          <label for="first_name">delta</label>
+					        </div>
+					         <div class="input-field col s6">
+					          <input placeholder="order" id="orderdelta" type="number" min="1" max="3" class="validate" value="3">
+					          
+					        </div>
+					        <!--    ***************  traslation *************** -->
+					     <div class="row">
+					        <div class="input-field col s12">
+					          <input placeholder="x" id="x" type="number" class="validate" value="1">
+					          <label for="first_name">x</label>
+					        </div>
+					       
+					      </div>
+					     <div class="row">
+					        <div class="input-field col s12">
+					          <input placeholder="y" id="y" type="number" class="validate" value="1">
+					          <label for="first_name">y</label>
+					        </div>
+					       
+					      </div>
+					      <div class="row">
+					        <div class="input-field col s12">
+					          <input placeholder="z" id="z" type="number" class="validate" value="1">
+					          <label for="first_name">z</label>
+					        </div>
+					       
+					      </div>
+					    </form>
+					</div>
+				  </div>
+	           
+	            <div class="card-action">
+	              <a href="#" onclick="playanimation()">play</a>
+	              <a href="#"onclick="reset()">reset</a>
+	            </div>
+	             </div>
+	          </div>
+	        </div>
+	      </div>
+
+		<canvas id="mycanvas">
+			
+		</canvas>
+
+		
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	
+		 <!-- Compiled and minified JavaScript -->
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+
+		<script src="js/Three.js"></script>
+
+		
+		<script type="text/javascript" src="js/loaders/MTLLoader.js" ></script>
+		<script type="text/javascript" src="js/loaders/OBJLoader.js" ></script>
+		<script src="js/controls/DragControls.js"></script>
+		<script src="js/controls/OrbitControls.js"></script>
+		<script src="js/controls/TransformControls.js"></script>
+		<script src="js/libs/stats.min.js"></script>
+		<script src="js/app/init.js"></script>
+		<script src="js/app/animate.js"></script>
+		<script src="js/app/mainApp.js"></script>
+		<script type="text/javascript">
+			
+		</script>
+		
+	
+						
+	</body>
+</html>
