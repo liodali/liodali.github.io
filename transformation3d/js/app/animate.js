@@ -2,22 +2,23 @@
 function animate() {
 				requestAnimationFrame( animate );
 				render();
-				
+
 				//console.log("r: "+Res.elements);
 				//console.log("c: "+cube.matrix.elements);
 				//controls.update();
-				
-			
+
+
 			}
 			function render() {
 				var speed1 =  0.001;//0.001;
 				var speed2 =  0.01;
 
-				
-				
+
+
 				if(new_phy>=(phy/23) && new_delta>=(delta/23) && new_theta>=(theta/23)){
 					playanim=false;
-					new_theta=0; 
+					translation=true;
+					new_theta=0;
 					new_delta=0;
 					new_phy=0;
 				}
@@ -31,13 +32,13 @@ function animate() {
 					// rotation x we used theta=30
 					var rotx=new  THREE.Matrix4();
 					rotx.set(1,0,0,0 ,
-						     0,Math.cos(new_theta),Math.sin(new_theta),0, 
+						     0,Math.cos(new_theta),Math.sin(new_theta),0,
 						     0,-Math.sin(new_theta),Math.cos(new_theta),0,
 						     0,0,0,1 );
 					//console.log(rotx.elements );
 					// rotation y we used delta=25
 					var roty=new  THREE.Matrix4();
-					roty.set(Math.cos(new_delta),0,-Math.sin(new_delta),0, 
+					roty.set(Math.cos(new_delta),0,-Math.sin(new_delta),0,
 							 0,1,0,0 ,
 						     Math.sin(new_delta),0,Math.cos(new_delta),0,
 						     0,0,0,1 );
@@ -47,23 +48,34 @@ function animate() {
 							Math.sin(new_phy),Math.cos(new_phy),0,0,
 							0,0,1,0,
 							0,0,0,1);
-					
-					var R=prod_order(Xord,Yord,Zord,rotx,roty,rotz);
+
+					Rotationfinal=prod_order(Xord,Yord,Zord,rotx,roty,rotz);
+
+					//Rotationfinal.copy(R);
+
+
+					airplan.applyMatrix(Rotationfinal);
+
+					axishelp.applyMatrix(Rotationfinal);
+					//playanim=false;
+				}else
+				if(translation){
 					//translation
 					var Trans=new THREE.Matrix4();
-					Trans.set(1,0,0,tx*speed2,
-							  0,1,0,ty*speed2,
-							  0,0,1,tz*speed2,
-							  0,0,0,1);
-
+					Trans.set(1,0,0,tx,
+									  0,1,0,ty,
+									  0,0,1,tz,
+									  0,0,0,1);
 					// mutliple T*R
 					var Res=new THREE.Matrix4();
-					Res.multiplyMatrices(R,Trans);
-					
+
+					Res.multiplyMatrices(Trans,Rotationfinal);
 					airplan.applyMatrix(Res);
 					axishelp.applyMatrix(Res);
-					//playanim=false;
-				}
+					translation=false;
+					console.log(airplan.matrix.elements);
+					console.log("final");
+				}else
 				if(resetcube){
 
 					airplan.position.set(0,0,0);
@@ -72,14 +84,14 @@ function animate() {
 					axishelp.rotation.set(0,0,0);
 					resetcube=false;
 				}
-				
-			
-				
+
+
+
 				renderer.render( scene, camera );
 			}
 			function calculprodMat(mat1,mat2){
 				var R=new THREE.Matrix4();
-				
+
 				R.multiplyMatrices(mat1,mat2);
 				return R;
 			}
@@ -89,7 +101,7 @@ function animate() {
 						if(yo=="2"){
 							 r1=calculprodMat(rx,ry);
 							 r=calculprodMat(r1,rz);
-							
+
 						}else{
 							 r1=calculprodMat(rx,rz);
 							 r=calculprodMat(r1,ry);
@@ -115,6 +127,6 @@ function animate() {
 							 r=calculprodMat(r1,rx);
 						}
 					}
-					return r;	
+					return r;
 
 			}
