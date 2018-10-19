@@ -1,0 +1,790 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+        <link rel="stylesheet" href="css/range.css">
+        <link rel="stylesheet" href="css/reponsive-style.css"/>
+        
+    </head>
+    <body>
+        <div class="reveal" id="particles-js">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <section style="height: 100%;top:0px;">
+                    <p style="width: 70%;margin: auto;">
+                        <small>
+                                Ministry of Higher Education and Scientific Research
+                               
+                        </small>
+                        <small>
+                                University of Manouba
+                        </small>
+                    </p>
+                    <div style="margin-top:112px">
+                            <h2 style="color:#5440ef;">Machine Learning for smarthome</h2>
+
+                            <p>
+                                <small>By</small>
+                                Mohamed Ali Hamza
+                               
+                            </p>
+                            <p>
+                                    <small>Supervised By</small>
+                                    Ms Imen Ben Cheikh
+                            </p>
+                    </div>
+                   
+                  
+                </section>
+                <section>
+                        <div >
+                                <h2 style="color:#5440ef;"> Outline</h2>
+                                <p class="fragment fade-in" > Introduction</p>
+                                <p class="fragment fade-in" > State of the Art</p>
+                                <p class="fragment fade-in" > Proposed Approach</p>
+                                <p class="fragment fade-in" > Implementation</p>
+                                <p class="fragment fade-in" > Conclusion and Perspective</p>
+                        </div>
+                        
+                </section>
+                <section>
+                    <section style="height: 100%;top:0px;" data-autoslide="1500">
+                        <h2 style="color:#5440ef;">Introduction</h2>
+                        
+                        
+                </section>
+                <section>
+                    <div style="margin-top:112px">
+                        <p>
+                            <h3 class="fragment" data-autoslide="3000">What is Smart Home?</h3>
+                            <h5 class="fragment" ><span class="fragment" >control ,</span> <span class="fragment" >automate </span> <span class="fragment" data-autoslide="500">any  aspects of the house</span></h5>
+                        </p>
+                    </div>
+                </section>
+                <section style="height: 100%;top:0px;">
+                    <h2 style="color:#5440ef;">Smart Home</h2>
+                 </section>
+                 <section >
+                    <div style="margin-top:112px">
+                        <p>More popular</p>
+                    </div>
+                 </section>
+                 <section >
+                    <div style="margin-top:112px">
+                       
+                        <h4>4 reasons to build Smart Home</h4>
+                        <ol>
+                            <li  class="fragment" data-autoslide="2000" style="font-size: 35px;">Convenience</li>
+                            <li  class="fragment" data-autoslide="2000" style="font-size: 35px;">Security</li>
+                            <li  class="fragment" data-autoslide="2000" style="font-size: 35px;">Comfort</li>
+                            <li  class="fragment" data-autoslide="2000" style="font-size: 35px;">Efficiency</li>
+                        </ol>
+                    </div>
+                 </section>
+                 <section style="height: 100%;top:0px;" data-autoslide="2000">
+                    <h2 style="color:#5440ef;">Problem Motivation</h2>
+                 </section>
+                 <section >
+                    <p>Face Recognition is one of the areas from Computer Vision</p>
+                 </section>
+                 <section>
+                     <img src="img/problem.gif"/>
+                    <p>Difficult issue</p>
+                 </section>
+                 <section >
+                    
+                    <p>Uncommonly implemented in industries</p>
+
+                 </section>
+                 <section style="height: 100%;top:0px;" data-autoslide="1500">
+                    <h2 style="color:#5440ef;">Goal</h2>
+                 </section>
+                 <section data-autoslide="5000">
+                    <p>Create a complete Face Recognition system</p>
+                    <ol style="font-size:35px">
+                        <li class="fragment" data-autoslide="1000">Working with any kind of images.</li>
+                        <li class="fragment" data-autoslide="2000">Improve itself.</li>
+                    </ol>
+                    
+                     
+                 </section>
+            </section>
+            <section style="height: 100%;top:0px;" >
+                <section data-autoslide="2000">
+                    <h2 style="color:#5440ef;">State of the Art</h2>
+                </section>
+                <section >
+                    <h2 style="color:#5440ef;">Machine Learing </h2>     
+                 </section>
+                 <section >
+                    <p>Building math models to learn from dataset and make predictions </p>     
+                 </section>
+                 <section >
+                    <p>Uses optimization to find the optimal parameter values for a model</p>     
+                 </section>
+                 <section data-autoslide="15000">
+                        <h4>3 types of Machine learning</h4>
+                        <ol>
+                            <li  class="fragment">Supervised learning</li>
+                            <li  class="fragment">Unsupervised learning</li>
+                            <li  class="fragment">Reinforcement Learning</li>
+                        </ol>    
+                 </section>
+                 <section data-autoslide="1000">
+                        <h2 style="color:#5440ef;">Neural network </h2>     
+                  </section>
+                  <section>
+                      <p>Inspired from human brain</p>
+                  </section>
+                  <section>
+                        <p>Algorithm that learns to identify patterns in data</p>
+                    </section>
+                  <section>
+                      <div class="row">
+                            <div class="column-main-range "style="margin-top:14%;">
+                                    <div class="row">
+                                          <div class="column">
+                                                  <input type="range" min="1" max="100" value="4" class="slider" id="inputs_layers"/>
+                                          </div>
+                                          <div class="column more-info">
+                                                  <small>input layer:<span id="i_val"></span></small>
+                                          </div>
+                                         
+                                          
+                                    </div>
+                                    <div class="row">
+                                            <div class="column">
+                                          <input type="range" min="1" max="128" value="5" class="slider" id="neurons"/> 
+                                          </div>
+                                          <div class="column more-info">
+                                          <small>neurons:<span id="n_val"></span></small>
+                                          </div>
+                                     </div>
+                                    <div class="row">
+                                            <div class="column"><input type="range" min="1" max="128" value="1" class="slider" id="hidden_layers"/></div>
+                                            <div class="column more-info"><small>hidden layer:<span id="h_val"></span></small></div>
+                                    </div>
+                                    
+                                     <div class="row">
+                                            <div class="column"><input type="range" min="1" max="15" value="3" class="slider" id="outputs_layers"/></div>
+                                                <div class="column more-info"><small>output layer:<span id="o_val"></span></small></div>
+                                     </div>
+                                     
+                                     
+                                  
+                                     
+                                </div>
+                                <div  class="column-main" id="neural_net">
+
+                                    </div>
+                      </div>
+                      
+                      
+                  </section>
+                  <section data-autoslide="1000">
+                        <h2 style="color:#5440ef;">Convolutionel Neural network </h2>     
+                  </section>
+                  <section>
+                      <p>Useful for image classification and recognition</p>
+                  </section>
+                  <section>
+                      <h3>Two main parts</h3>
+                      <ol>
+                        <li  class="fragment" data-autoslide="5000" style="font-size: 35px;">Feature extraction</li>
+                        <li  class="fragment" data-autoslide="5000"  style="font-size: 35px;">Classification</li>
+                    </ol> 
+                  </section>
+                  <section>
+                      <div id="cnn">
+
+                      </div>
+                  </section>
+                  <section>
+                    <canvas id="cnnchart" style='width:"400px"; height:"400px"'></canvas>
+                </section>
+             </section>
+             <section>
+                    <section>
+                            <h2  style="color:#5440ef;">Proposed Approach</h2>
+                    </section>
+                    <section>
+                            <h3>Principale Steps</h3>
+                            <ol>
+                                <li class="fragment" id="fr" data-autoslide="2000" style="font-size: 35px;">Face recognition model</li>
+                                <li class="fragment" id="cry" data-autoslide="2000" style="font-size: 35px;">Baby Cry voice  recognition </li>
+                                <li class="fragment" id="cd" data-autoslide="2000" style="font-size: 35px;">Create Devices</li>
+                                <li class="fragment" id="cma"data-autoslide="2000" style="font-size: 35px;">Create mobile application</li>
+                                <li class="fragment" id="cwa"style="font-size: 35px;">Create Web application</li>
+                            </ol>
+                            <canvas id="scene" class="scene" style="left: 85%;"></canvas>
+                            
+                    </section>
+                    <section>
+                        <h2 style="color:#5440ef;">face recognition model</h2>
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                        <canvas id="myChart" style='width:"400px"; height:"400px"'></canvas>
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                        <canvas id="myChart1" style='width:"400px"; height:"400px"'></canvas>
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                        <canvas id="myChart2" style='width:"400px"; height:"400px"'></canvas>
+                    </section >
+                    <section data-transition="fade-in fade-out">
+                        <canvas id="myChart3" style='width:"400px"; height:"400px"'></canvas>
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                        <canvas id="myChart4" style='width:"400px"; height:"400px"'></canvas>
+                    </section>
+                    <section data-transition="slide-in fade-out">
+                        <h4>Face recognition system</h4>
+                        <img src="img/concept_approach_principale.png">
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                            <h4>Baby cry  voice recognition system</h4>
+                            <img src="img/cry_voice.png">
+                    </section>
+                    <section>
+                            <h2  style="color:#5440ef;">Use cases diagrams</h2>
+                        </section>
+                    <section data-transition="fade-in fade-out">
+                            <h4>Use case diagram for mobile application</h4>
+                            <img src="img/usecaseappmb.png">
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                            <h4>Use case diagram for web application</h4>
+                            <img src="img/usecaseplatform.png">
+                    </section>
+             </section>
+             <section>
+                    <section>
+                        <h2  style="color:#5440ef;">Implementation</h2>
+                    </section>
+                    <section data-transition="slide-in fade-out">
+                       
+                            <h3>Scrum</h3>
+                       
+                        
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                            <h3>Sprints Planning</h3>
+                            <ol style="font-size: 30px;">
+                                <li class="fragment">Machine Learning Models</li>
+                                <li class="fragment">Create and Control devices</li>
+                                <li class="fragment">Web platform</li>
+                            </ol>
+                        </section>
+                    <section>
+                            <h3 style="color:#5440ef;">Machine Learning Models</h3>
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                            <h4>Activity Diagram for Face recognition</h4>
+                            <img src="img/activiteML.png" style="height: 80%;">
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                            <h4>Activity Diagram for Face Tracking</h4>
+                            <img src="img/trackactiviteML.png" style="height: 80%;">
+                    </section>
+                    <section>
+                        <div id="share">
+
+                        </div>
+                    </section>
+                    <section>
+                            <h3 style="color:#5440ef;">Create and Control devices</h3>
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                            <h4>Device schema</h4>
+                            <img src="img/plug_schema.png" style="height: 80%;">
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                            <h4>Device schema</h4>
+                            <img src="img/sensoring_schema.png" style="height: 80%;">
+                    </section>
+                    
+                    <section data-transition="fade-in fade-out">
+                            <h4>Classes Diagram for mobile application</h4>
+                            <img src="img/classemb.png" style="height: 80%;">
+                    </section>
+                    <section>
+                            
+                        <div id="player"></div><div class="clear"></div>
+                        <br/><br/><br/>
+                        <input type="text" id="stream_url" value="rtsp://172.16.10.4/live/sharephone"/><br/>
+                        <input type="button" id="btn_start" class="" value="Start" />
+                        <input type="button" id="btn_stop" class="" value="Stop"/>
+                    </section>
+                    <section>
+                            <h3 style="color:#5440ef;">Web platform</h3>
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                            <h4>Classes Diagram for web application</h4>
+                            <img src="img/classplatform.png" style="height: 80%;">
+                    </section>
+                    <section>
+                            <iframe src="http://172.20.10.4:5000/auth/login" width="100%" height="100%"></iframe>
+                    </section>
+            </section>
+             <section>
+                 <section>
+                     <h2  style="color:#5440ef;">Conlusion & Perspective</h2>
+                 </section>
+                 <section data-transition="fade-in fade-out">
+                     <p>Fully working Face Recognition system and baby cry  voice recognition</p>
+                 </section>
+                 <section data-transition="fade-in fade-out">
+                     <p>Alpha version of mobile and web application</p>
+                </section>
+                <section>
+                    <h2 style="color:#5440ef;">Perspective</h2>
+                </section>
+                <section data-transition="fade-in fade-out">
+                    <p>Use a decentralized technology</p>
+                  
+                </section>
+                <section data-transition="fade-in fade-out">
+                        <p>Improve the usability and the functionalities of our solution</p>
+                </section>
+             </section>
+             <section>
+                 <h3>Thanks for your attention</h3>
+                 <canvas id="smile" class="scene" style="top:250%;"></canvas>
+             </section>
+             
+
+            </div>
+        </div>
+       
+        <script>
+            function drawSmile(){
+
+                var canvas2= document.getElementById("smile");
+                var ctx2= canvas2.getContext("2d");
+
+                canvas2.width = png2.width;
+                canvas2.height = png2.height;
+
+                ctx2.drawImage(png2, 0, 0);
+
+                var data = ctx2.getImageData(0, 0, png2.width, png2.height);
+                ctx2.clearRect(0,0,canvas2.width, canvas2.height);
+
+                var	particles = [];
+                for (var y = 0, y2 = data.height; y < y2; y++) {
+                    for (var x = 0, x2 = data.width; x < x2; x++) {
+                        if (data.data[(y * 12* data.width) + (x *12) + 3] >8) {
+                            var particle = {
+                                x : x,
+                                y : y,
+                                color: "yellow"
+                            };
+                            particles.push(particle);
+                        }
+                    }
+                }
+
+                for(var i=0, j=particles.length;i<j;i++){
+                    var particle = particles[i];
+                    ctx2.fillStyle = particle.color;
+                    ctx2.fillRect(particle.x*3, particle.y*3, 2, 2);
+                }
+
+                }
+            function drawScene(){
+
+                var canvas 	  = document.getElementById("scene");
+                var ctx       = canvas.getContext("2d");
+
+                canvas.width = png.width;
+                canvas.height = png.height;
+
+                ctx.drawImage(png, 0, 0);
+
+                var data = ctx.getImageData(0, 0, png.width, png.height);
+                ctx.clearRect(0,0,canvas.width, canvas.height);
+
+                var	particles = [];
+                for (var y = 0, y2 = data.height; y < y2; y++) {
+                    for (var x = 0, x2 = data.width; x < x2; x++) {
+                        if (data.data[(y * 12* data.width) + (x *12) + 3] >8) {
+                            var particle = {
+                                x : x,
+                                y : y,
+                    color: "hsl("+(x*2.6)+",50%,50%)"
+                            };
+                            particles.push(particle);
+                        }
+                    }
+                }
+
+                for(var i=0, j=particles.length;i<j;i++){
+                    var particle = particles[i];
+                ctx.fillStyle = particle.color;
+                    ctx.fillRect(particle.x*3, particle.y*3, 2, 2);
+                }
+
+                }
+                var png = new Image();
+                var png2 = new Image();
+            function draw(name){
+                
+                png.onload = drawScene; 
+                png.src = name;
+            }
+            
+            function draw2(name){
+                
+                png2.onload = drawSmile; 
+                png2.src = name;
+            }
+            //draw("img/face.png");
+            draw2("img/smile.png");
+             
+        </script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/particles.min.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/socket.io.js"></script>
+        <script src="js/jwplayer.js"></script>
+        <script src="js/mplayer.js"></script>
+        <script>jwplayer.key = "HHCUrQMI"</script>
+
+        <script>
+                var cnn_ctx = document.getElementById("cnnchart");
+                var myBarChart  = new Chart(cnn_ctx, {
+                 type: 'bar',
+                 data: {
+                     labels: ["AlexNet","resnet-18","vgg16", "vgg19",  "resenet-50", "inception-v3", "inception-v4"],
+                     datasets: [{
+                         label: 'CNN models',
+                         data: [54,69,71, 71,76, 78,80,100],
+                         backgroundColor: [
+                         'rgba(255, 99, 132, 0.2)',
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                         ],
+                         borderColor: [
+                         'rgba(255, 99, 132, 0.2)',
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                         ],
+                         borderWidth: 1
+                     }]
+                 }
+            });
+            </script>
+
+        <script>
+
+            var hidden=5;
+            var neuron=10;
+            var inputs=4;
+            var outputs=1;
+            var hidden_slider = document.getElementById("hidden_layers");
+            var input_slider = document.getElementById("inputs_layers");
+            var output_slider = document.getElementById("outputs_layers");
+            var neuron_slider = document.getElementById("neurons");
+
+
+            const  socket = io('http://localhost:5000');
+            socket.on('connect', function(){
+                console.log(socket.connected);
+               
+            });
+            socket.on('test', function(data){
+                console.log("receive frame "+data);
+               
+            });
+            socket.on('camera', function(data){
+                console.log("receive frame");
+                console.log(data);
+                _data=JSON.parse(data);
+                
+                $("#share").html("<img  src='data:image/jpeg;base64,"+_data.img+"' width='600px' heigth='600px' style='border:none;box-shadow:none;background:none'/>");
+
+            });
+            socket.on('control', function(data){
+                console.log("receive action");
+                _data=JSON.parse(data);
+                if(_data.action=="avant"){
+                    Reveal.next();
+                }else if(_data.action=="back"){
+                    Reveal.prev();
+                }
+            });
+            socket.on("ann",function(data){
+                _data=JSON.parse(data);
+                hidden=_data.hidden;
+                neuron=_data.neuron;
+                inputs=_data.inputs;
+                outputs=_data.outputs;
+                var src=_data.img
+                $("#neural_net").html("<img  src='data:image/png;base64,"+src+"' width='600px' heigth='600px' style='border:none;box-shadow:none;background:none'/>");
+            })
+            
+            
+        </script>
+
+
+        <script>
+                particlesJS.load('particles-js', 'particles.json', function(){
+                  console.log('particles.json loaded...');
+                });
+              </script>
+              <script src="lib/js/head.min.js"></script>
+              <script src="js/reveal.js"></script>
+        <script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+                showNotes:true,
+                overview: true,
+                slideNumber: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/math/math.js', async: true },
+				]
+			});
+            Reveal.addEventListener( 'fragmentshown', function( event ) {
+                console.log(event.fragment.id);// = the fragment DOM element
+                switch(event.fragment.id){
+                    case "fr":
+                    draw("img/face.png");
+                    break;
+                    case "cry":
+                        draw("img/cry.png");
+                        break;
+                    case "cd":
+                        draw("img/circuit.png");
+                    break;
+                    case "cma":
+                        draw("img/ma.png");
+                    break;
+                    case "cwa":
+                        draw("img/website.png");
+                    break;
+                }
+            } );
+            Reveal.addEventListener( 'fragmenthidden', function( event ) {
+                console.log(event.fragment .id);
+                // event.fragment = the fragment DOM element
+            } );
+		</script>
+        <script>
+            
+            var url="http://localhost:5000/ann/v";
+
+            var ctx = document.getElementById("myChart");
+            var ctx2 = document.getElementById("myChart1");
+            var ctx3 = document.getElementById("myChart2");
+            
+            var ctx4 = document.getElementById("myChart3");
+            var ctx5 = document.getElementById("myChart4");
+                var data={
+                    
+                    datasets: [{
+                        
+                        fill: false,
+                        backgroundColor:'rgb(255, 99, 132)',
+                        label: "acc",
+                        borderColor: 'rgb(255, 99, 132)',
+                        
+                    }]
+                };
+                var myLineChart = new Chart(ctx, {
+                    type: 'line',
+                    data: data
+                });
+                var myLineChart2 = new Chart(ctx2, {
+                    type: 'line',
+                    data: data
+                });
+                var myLineChart3 = new Chart(ctx3, {
+                    type: 'line',
+                    data: data
+                });
+
+                var myLineChart4 = new Chart(ctx4, {
+                    type: 'line',
+                    data: data
+                });
+                var myLineChart5 = new Chart(ctx5, {
+                    type: 'line',
+                    data: data
+                });
+            var version=2;
+            $(document).ready(function(){
+                hidden=hidden_slider.value;
+                neuron=neuron_slider.value;
+                outputs=output_slider.value;
+                inputs=input_slider.value;
+                $("#h_val").text(hidden);
+                $("#i_val").text(inputs);
+                $("#o_val").text(outputs);
+                $("#n_val").text(neuron);
+                
+                send(inputs,hidden,neuron,outputs,version);
+                send_cnn();
+                send_acc(15,myLineChart);
+                send_acc(16,myLineChart2);
+                send_acc(17,myLineChart3);
+                
+                
+                send_acc(-2,myLineChart4);
+                send_acc(-1,myLineChart5);
+            });
+         
+            hidden_slider.onchange = function() {
+                hidden= this.value;
+                $("#h_val").text(hidden);
+                send(inputs,hidden,neuron,outputs,version);
+            }
+            input_slider.onchange = function() {
+                inputs= this.value;
+                $("#i_val").text(inputs);
+                send(inputs,hidden,neuron,outputs,version);
+            }
+            output_slider.onchange = function() {
+                outputs= this.value;
+                $("#o_val").text(outputs);
+                send(inputs,hidden,neuron,outputs,version);
+            }
+            neuron_slider.onchange = function() {
+                neuron= this.value;
+                $("#n_val").text(neuron);
+                send(inputs,hidden,neuron,outputs,version);
+                
+            }
+
+            hidden_slider.oninput = function() {
+                hidden= this.value;
+                $("#h_val").text(hidden);
+            }
+            input_slider.oninput = function() {
+                inputs= this.value;
+                $("#i_val").text(inputs);
+            }
+            output_slider.oninput = function() {
+                outputs= this.value;
+                $("#o_val").text(outputs);
+            }
+            neuron_slider.oninput = function() {
+                neuron= this.value;
+                $("#n_val").text(neuron);
+            }
+
+            function send(i,h,n,o,v){
+                obj={hidden:hidden,neuron:neuron,inputs:inputs,outputs:outputs}
+                var data_json = JSON.stringify(obj);
+                console.log(data_json);
+                //$.post("http://localhost:5000/ann",data_json,_success,"application/json");
+                $.ajax({
+                    url: url+v,
+                    type: "POST",
+                    data: data_json,
+                    dataType: "json",
+                    async: false,
+                    contentType: "application/json",
+                    success: function (data, textStatus, jqXHR) {
+                                        _data=JSON.parse(data);
+                                        console.log(_data);
+                                        if(_data.success==true){
+                                        
+                                        
+                                        var src=_data.img
+                                        $("#neural_net").html("<img  src='data:image/png;base64,"+src+"' width='600px' heigth='600px' style='border:none;box-shadow:none;background:none'/>");
+                                        }
+                    }
+                })
+            }
+            function send_cnn(){
+               
+                //$.post("http://localhost:5000/ann",data_json,_success,"application/json");
+                $.ajax({
+                    url: "http://localhost:5000/cnn/v1",
+                    type: "POST",
+                    async: false,
+                    contentType: "application/json",
+                    success: function (data, textStatus, jqXHR) {
+                                        _data=JSON.parse(data);
+                                        console.log(_data);
+                                        if(_data.success==true){
+                                        
+                                        
+                                        var src=_data.img
+                                            $("#cnn").html("<img  src='data:image/png;base64,"+src+"' width='1200px' heigth='600px' style='border:none;box-shadow:none;background:none'/>");
+                                    }
+                    }
+                })
+            };
+            function send_acc(f,chart){
+               
+               //$.post("http://localhost:5000/ann",data_json,_success,"application/json");
+               $.ajax({
+                   url: "http://localhost:5000/historique/acc/"+f,
+                   type: "POST",
+                   async: false,
+                   contentType: "application/json",
+                   success: function (data, textStatus, jqXHR) {
+                                       _data=JSON.parse(data);
+                                       console.log(_data);
+                                       if(_data.success==true){
+                                        var line_data={
+                                                labels:_data.lables,
+                                                datasets: [{
+                                                    
+                                                    fill: false,
+                                                    backgroundColor:'rgb(42, 237, 55)',
+                                                    label: "acc",
+                                                    borderColor: 'rgb(42, 237, 55)',
+                                                    data:_data.acc
+                                                },{
+                                                    
+                                                    fill: false,
+                                                    backgroundColor:'rgb(237, 191, 41)',
+                                                    label: "validation acc",
+                                                    borderColor: 'rgb(237, 191, 41)',
+                                                    data:_data.val_acc
+                                                }]
+                                            }
+                                          
+                                            chart.data=line_data;
+                                            chart.update();
+                                            chart.render();
+                                      
+                                   }
+                   }
+               })
+           };
+            
+        </script>
+    </body>
+</html>
